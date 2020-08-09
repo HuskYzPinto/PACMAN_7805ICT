@@ -50,7 +50,8 @@ public class Movement_Pacman : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameOver"));
         }
     }
 }

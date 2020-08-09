@@ -8,7 +8,6 @@ public class Pacdot : MonoBehaviour
     {
         if (col.gameObject.name == "Mouth")
         {
-            print(" Object" + col.gameObject);
             Destroy(gameObject);
         }
     }
