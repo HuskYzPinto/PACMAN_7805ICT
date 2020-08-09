@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement_Pacman : MonoBehaviour
 {
@@ -45,6 +46,13 @@ public class Movement_Pacman : MonoBehaviour
         GetComponent<Animator>().SetFloat("Y", direction.y);
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        }
+    }
 }
 
 

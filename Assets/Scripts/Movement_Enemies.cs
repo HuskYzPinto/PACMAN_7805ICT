@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement_Enemies : MonoBehaviour
+public class Movement_ : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
         
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
+    void Update()
+    {
         
     }
+    
+    
 }
