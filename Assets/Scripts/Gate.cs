@@ -16,10 +16,10 @@ public class Gate : MonoBehaviour
         
     }
     
-    void OnTriggerEnter (Collider2D col){
-        Physics2D.IgnoreLayerCollision(8, 9);
-    }
-    void OnTriggerExit (Collider2D col){
-        Physics2D.IgnoreLayerCollision(8, 9, false);
-    }
+//    void OnTriggerEnter (Collider2D col){
+//        Physics2D.IgnoreLayerCollision(8, 9);
 }
+//    void OnTriggerExit (Collider2D col){
+//        Physics2D.IgnoreLayerCollision(8, 9, false);
+//    }
+//}
