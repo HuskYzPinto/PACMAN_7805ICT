@@ -38,13 +38,19 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Movement_Enemies.cs" />
      <Compile Include="Assets\Scripts\StartMenu.cs" />
-     <Compile Include="Assets\Scenes\mainchar.cs" />
+     <Compile Include="Assets\Scripts\fruitCounter.cs" />
+     <Compile Include="Assets\Scripts\mainchar.cs" />
      <Compile Include="Assets\Scripts\Pacdot.cs" />
      <Compile Include="Assets\Scripts\Movement_Pacman.cs" />
      <Compile Include="Assets\Scripts\ExitMenu.cs" />
      <Compile Include="Assets\Scripts\AddDot.cs" />
+     <Compile Include="Assets\Scripts\PinkGhost.cs" />
+     <Compile Include="Assets\Scripts\OrangeGhost.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
-     <Compile Include="Assets\Scripts\fruitCounter.cs" />
+     <Compile Include="Assets\Scripts\GreenGhost.cs" />
+     <Compile Include="Assets\Scripts\BlueGhost.cs" />
+     <Compile Include="Assets\Scripts\Vore.cs" />
+     <Compile Include="Assets\Scripts\ScoreDisplay.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Unity/2020.1.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Movement_Pacman : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 0.4f;
+    public float speed = 0.1f;
     Vector2 destination = Vector2.zero;
     Vector2 new_destination = Vector2.zero;
     public LayerMask layer;
@@ -18,6 +18,9 @@ public class Movement_Pacman : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
+            this.enabled = false;
+        }
         Vector2 pos = Vector2.MoveTowards(transform.position, destination, speed);
         GetComponent<Rigidbody2D>().MovePosition(pos);
         
@@ -27,9 +30,7 @@ public class Movement_Pacman : MonoBehaviour
         if (Input.GetAxis("Horizontal")<0) new_destination = Vector2.left; SetAnimation(new_destination);
         
         if (Valid(new_destination)) destination = (Vector2)transform.position + new_destination;
-  
 
-        
     }
     bool Valid(Vector2 direction)
     {
@@ -46,11 +47,11 @@ public class Movement_Pacman : MonoBehaviour
         GetComponent<Animator>().SetFloat("Y", direction.y);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameOver"));
         }
     }

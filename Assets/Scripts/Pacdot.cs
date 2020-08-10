@@ -9,6 +9,9 @@ public class Pacdot : MonoBehaviour
         if (col.gameObject.name == "Mouth")
         {
             Destroy(gameObject);
+            GameObject score = GameObject.Find("Score");
+            Vore currentScore = score.GetComponent<Vore>();
+            currentScore.count += 1;
         }
     }
 }

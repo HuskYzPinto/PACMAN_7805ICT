@@ -5,13 +5,13 @@ using UnityEngine;
 public class AddDot : MonoBehaviour
 {
     // Start is called before the first frame update
+    //328 total dots
     public Transform prefab;
     public Transform parent;
     public Vector2 point;
     public LayerMask map;
     public LayerMask map2;
     void Start(){
-        
         Transform dot;
         LayerMask layers;
         layers = map.value | map2.value;

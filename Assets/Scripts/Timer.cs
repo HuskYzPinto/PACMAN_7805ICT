@@ -8,21 +8,27 @@ public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text output;
-    float startTime;
-    float endTime;
+    public float totalTime;
+    bool timerStarted;
+    bool gameStarted;
     void Start(){
-        startTime = Time.time;
-        print ("Current Scene: " + SceneManager.GetActiveScene().name);
-        
+        gameStarted = false;
+        timerStarted = false;
     }
 
     // Update is called once per frame
-    void Update(){
-        print ("Current Scene: " + SceneManager.GetActiveScene().name);
-        print ("Current Time: " + Time.time);
-        if (SceneManager.GetActiveScene().name == "GameOver"){
-            endTime = Time.time;
-            this.enabled = false;
+    void FixedUpdate(){
+        if (!gameStarted && Input.anyKey){
+            gameStarted = true;
+            timerStarted = true;
+        }
+        if (gameStarted){
+            if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
+                timerStarted = false;
+            }
+            if (timerStarted){
+                totalTime += Time.deltaTime;
+            }
         }
     }
 }
