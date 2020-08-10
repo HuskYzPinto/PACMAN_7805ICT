@@ -8,6 +8,8 @@ public class GreenGhost : MonoBehaviour
     public float speed = 0.075f;
 
     float seed;
+    int fcountg = 0;
+    public bool gmoved;
     public Transform player;
     Vector2 direction;
     Vector2 destination;
@@ -16,15 +18,24 @@ public class GreenGhost : MonoBehaviour
     void Start(){
         destination = transform.position;
         MoveSelection();
+        gmoved = false;        
         gameStarted = false;
     }
     // Update is called once per frame
     void FixedUpdate(){
+        
         if (!gameStarted && Input.anyKey){
             gameStarted = true;
         }
         
-        if (gameStarted){
+        GameObject orange = GameObject.Find("GhostO");
+        OrangeGhost obj = orange.GetComponent<OrangeGhost>();
+        bool ready = obj.omoved;
+        if (ready && !gmoved){
+            fcountg += 1;
+        }
+        if (gameStarted && fcountg >= 100){
+            gmoved = true;
             if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
                 this.enabled = false;
             }            

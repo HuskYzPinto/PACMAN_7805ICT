@@ -6,8 +6,9 @@ public class PinkGhost : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 0.075f;
-
+    public bool pmoved;
     float seed;
+    int fcountp = 0;
     public Transform player;
     Vector2 direction;
     Vector2 destination;
@@ -17,17 +18,26 @@ public class PinkGhost : MonoBehaviour
         destination = transform.position;
         MoveSelection();
         gameStarted = false;
+        pmoved = false;
     }
-
     // Update is called once per frame
     void FixedUpdate(){
+
         if (!gameStarted && Input.anyKey){
             gameStarted = true;
         }
-        if (gameStarted){
+        
+        GameObject blue= GameObject.Find("GhostB");
+        BlueGhost obj = blue.GetComponent<BlueGhost>();
+        bool ready = obj.bmoved;
+        if (ready && !pmoved){
+            fcountp += 1;
+        }
+        if (gameStarted && fcountp >= 100){
+            pmoved = true;
             if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
                 this.enabled = false;
-            }            
+            }    
             destination = transform.position;
             Vector2 pos = Vector2.MoveTowards(transform.position, destination+direction, speed);
             GetComponent<Rigidbody2D>().MovePosition(pos);

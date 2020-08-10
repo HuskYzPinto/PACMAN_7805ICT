@@ -8,7 +8,10 @@ public class BlueGhost : MonoBehaviour
     public float speed = 0.075f;
 
     float seed;
+    int fcountb = 0;
+    public bool bmoved;
     public Transform player;
+
     Vector2 direction;
     Vector2 destination;
     public LayerMask layer;
@@ -16,16 +19,24 @@ public class BlueGhost : MonoBehaviour
     void Start(){
         destination = transform.position;
         MoveSelection();
+        bmoved = false;
         gameStarted = false;
     }
 
     // Update is called once per frame
     void FixedUpdate(){
+
         if (!gameStarted && Input.anyKey){
             gameStarted = true;
         }
-        
-        if (gameStarted){
+        GameObject green = GameObject.Find("GhostG");
+        GreenGhost obj = green.GetComponent<GreenGhost>();
+        bool ready = obj.gmoved;    
+        if (ready && !bmoved){
+            fcountb += 1;
+        }   
+        if (gameStarted && fcountb >= 100){
+            bmoved = true;
             if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
                 this.enabled = false;
             }

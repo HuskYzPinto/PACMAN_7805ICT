@@ -7,7 +7,7 @@ public class OrangeGhost : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 0.075f;
-
+    public bool omoved;
     float seed;
     public Transform player;
     Vector2 direction;
@@ -17,6 +17,8 @@ public class OrangeGhost : MonoBehaviour
     void Start(){
         destination = transform.position;
         MoveSelection();
+        omoved = false;
+        Physics2D.IgnoreLayerCollision(8, 8);
         gameStarted = false;
     }
 
@@ -24,6 +26,7 @@ public class OrangeGhost : MonoBehaviour
     void FixedUpdate(){
         if (!gameStarted && Input.anyKey){
             gameStarted = true;
+            omoved = true;
         }
         if (gameStarted){
             if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){

@@ -190,7 +190,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maze_over
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4193001958370654118, guid: befc9e795efe5b9459a235b0c64b00d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613742269983013519, guid: befc9e795efe5b9459a235b0c64b00d6,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 18.644623
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613742269983013519, guid: befc9e795efe5b9459a235b0c64b00d6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.039243698
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6613742269983013519, guid: befc9e795efe5b9459a235b0c64b00d6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: befc9e795efe5b9459a235b0c64b00d6, type: 3}
 --- !u!1001 &1150866959
 PrefabInstance:
@@ -203,6 +219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Menu (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771501054044279811, guid: e3553613a1d7260438fcc34eb3e33ac3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8771501054044279868, guid: e3553613a1d7260438fcc34eb3e33ac3,
         type: 3}
