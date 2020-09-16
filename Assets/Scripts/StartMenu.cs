@@ -18,7 +18,7 @@ public class StartMenu : MonoBehaviour
     }
 
     void OnMouseDown(){
-        SceneManager.LoadScene("MainGame", LoadSceneMode.Single);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainGame"));
+        SceneManager.LoadScene("GameSquare", LoadSceneMode.Single);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameSquare"));
     }
 }

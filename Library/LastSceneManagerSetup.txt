@@ -1,17 +1,29 @@
 sceneSetups:
 - path: Assets/Scenes/StartMenu.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/GameSquare.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/GameHex.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
+- path: Assets/Scenes/GameGraph.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
 - path: Assets/Scenes/MainGame.unity
-  isLoaded: 1
+  isLoaded: 0
   isActive: 0
   isSubScene: 0
 - path: Assets/Scenes/Victory.unity
-  isLoaded: 1
+  isLoaded: 0
   isActive: 0
   isSubScene: 0
 - path: Assets/Scenes/GameOver.unity
-  isLoaded: 1
+  isLoaded: 0
   isActive: 0
   isSubScene: 0

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class Movement_Pacman : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 0.1f;
-    Vector2 destination = Vector2.zero;
-    Vector2 new_destination = Vector2.zero;
+    private Vector2 destination = Vector2.zero;
+    private Vector2 new_destination = Vector2.zero;
+    private Vector2 current_destination = Vector2.zero;
     public LayerMask layer;
     void Start()
     {
@@ -21,22 +21,52 @@ public class Movement_Pacman : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory"){
             this.enabled = false;
         }
-        Vector2 pos = Vector2.MoveTowards(transform.position, destination, speed);
-        GetComponent<Rigidbody2D>().MovePosition(pos);
         
-        if (Input.GetAxis("Vertical")>0) new_destination = Vector2.up ; SetAnimation(new_destination);
-        if (Input.GetAxis("Vertical")<0) new_destination = Vector2.down; SetAnimation(new_destination);
-        if (Input.GetAxis("Horizontal")>0) new_destination = Vector2.right; SetAnimation(new_destination);
-        if (Input.GetAxis("Horizontal")<0) new_destination = Vector2.left; SetAnimation(new_destination);
-        
-        if (Valid(new_destination)) destination = (Vector2)transform.position + new_destination;
+        Vector2 current_pos = transform.position;
+        Vector2 next_position =(current_pos+new_destination);
 
+        Vector2 move_from_current = Vector2.MoveTowards(transform.position, destination, speed);
+        GetComponent<Rigidbody2D>().MovePosition(move_from_current);
+
+        //if (Valid(current_destination)){
+        //    transform.Translate(current_destination.x*speed, current_destination.y*speed, 0);
+            
+        //} else{
+        //    transform.Translate(0, 0, 0);
+        //    print ("You're stuck");
+        //}
+        if (Input.GetAxis("Vertical")>0) new_destination = Vector2.up ;
+        if (Input.GetAxis("Vertical")<0) new_destination = Vector2.down;
+        if (Input.GetAxis("Horizontal")>0) new_destination = Vector2.right;
+        if (Input.GetAxis("Horizontal")<0) new_destination = Vector2.left;
+
+
+        if (Valid(new_destination)){
+            current_pos = new Vector2(Mathf.Round(current_pos.x), Mathf.Round(current_pos.y));
+            destination = current_pos+new_destination;
+            SetAnimation(new_destination);
+            current_destination = new_destination;
+        }
+    }
+    bool CheckSpot(Vector2 destination)
+    {
+        Vector2 current_position = transform.position;
+        return ((destination.x == current_position.x)&&(destination.y == current_position.y));
     }
     bool Valid(Vector2 direction)
     {
         Vector2 current_position = transform.position;
-        RaycastHit2D hit_detection = Physics2D.Linecast(current_position + direction, current_position, layer);
-        return (hit_detection.collider == GetComponent<Collider2D>()) ;
+        //print ("Current position"+current_position);
+        //print ("Direction"+direction);
+        //print ("next tile:"+(current_position+direction));
+        Vector2 next_position =(current_position+direction);
+
+        Collider2D walls = GameObject.FindWithTag("Wall").GetComponent<BoxCollider2D>();
+        //return !Physics2D.OverlapBox(next_position, new Vector2(1,1), 0f, layer);
+        //return !walls.bounds.Contains(current_position+direction);
+        RaycastHit2D hit_detection = Physics2D.Linecast(next_position, current_position, layer);
+        print ("Collided with"+ hit_detection.collider);
+        return (hit_detection.collider == !walls);
 
     }
 
