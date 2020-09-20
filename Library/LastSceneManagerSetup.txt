@@ -1,5 +1,21 @@
 sceneSetups:
-- path: Assets/Scenes/StartMenu.unity
+- path: Assets/Scenes/StartScreen.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
+- path: Assets/Scenes/PlayGame.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/GameMode.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Highscores.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Options.unity
   isLoaded: 0
   isActive: 0
   isSubScene: 0
@@ -8,8 +24,8 @@ sceneSetups:
   isActive: 0
   isSubScene: 0
 - path: Assets/Scenes/GameHex.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0
 - path: Assets/Scenes/GameGraph.unity
   isLoaded: 0
